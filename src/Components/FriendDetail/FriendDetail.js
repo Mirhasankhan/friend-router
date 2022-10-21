@@ -3,14 +3,16 @@ import { useParams } from 'react-router-dom';
 
 const FriendDetail = () => {
     const [friend, setFriend] = useState({})
+    const {friendId} = useParams();
 
     useEffect(() => {
         const url = `https://jsonplaceholder.typicode.com/users/${friendId}`
+        console.log(url)
         fetch(url)
         .then(res => res.json())
         .then(data => setFriend(data))
-    }, [])
-    const {friendId} = useParams();
+    }, [friendId]);
+
 
     const friendsStyle = {border: '2px solid green', padding: '20px', margin:'20px', borderRadius: '10px'}
     return (
